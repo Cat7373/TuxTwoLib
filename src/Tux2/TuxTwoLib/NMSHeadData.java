@@ -3,7 +3,6 @@ package Tux2.TuxTwoLib;
 import java.util.UUID;
 
 public class NMSHeadData {
-
     UUID id = null;
     String texture = null;
 
@@ -19,5 +18,4 @@ public class NMSHeadData {
     public String getTexture() {
         return this.texture;
     }
-
 }

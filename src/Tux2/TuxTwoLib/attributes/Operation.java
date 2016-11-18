@@ -11,13 +11,11 @@ package Tux2.TuxTwoLib.attributes;
  * Player's MOVEMENT_SPEED.</li>
  * <li><tt>ouput</tt> is the final value of this attribute.</li>
  * </ul>
- * 
+ *
  * @author Ruud Verbeek
  * @see AttributeType, Attribute
  */
-
 public enum Operation {
-
     /**
      * Will add <tt>amount</tt> to <tt>output</tt>. Will be applied before any other operation.
      */
@@ -47,5 +45,4 @@ public enum Operation {
         }
         return null;
     }
-
 }

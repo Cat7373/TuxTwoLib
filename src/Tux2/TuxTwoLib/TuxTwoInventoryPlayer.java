@@ -3,14 +3,13 @@ package Tux2.TuxTwoLib;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftInventoryPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftInventoryPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.server.v1_10_R1.PlayerInventory;
+import net.minecraft.server.v1_11_R1.PlayerInventory;
 
 public class TuxTwoInventoryPlayer extends CraftInventoryPlayer {
-
     public TuxTwoInventoryPlayer(final PlayerInventory inventory) {
         super(inventory);
     }
@@ -74,5 +73,4 @@ public class TuxTwoInventoryPlayer extends CraftInventoryPlayer {
         final InventoryChangeEvent eventcall = new InventoryChangeEvent((Player) this.getHolder(), index, item);
         Bukkit.getServer().getPluginManager().callEvent(eventcall);
     }
-
 }

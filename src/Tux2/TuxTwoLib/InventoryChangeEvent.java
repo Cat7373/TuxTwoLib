@@ -6,7 +6,6 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 
 public class InventoryChangeEvent extends Event {
-
     private static final HandlerList handlers = new HandlerList();
     int slot = -1;
     boolean armor = false;
@@ -55,5 +54,4 @@ public class InventoryChangeEvent extends Event {
     public Player getPlayer() {
         return this.player;
     }
-
 }

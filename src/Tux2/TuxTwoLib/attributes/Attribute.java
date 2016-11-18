@@ -6,17 +6,15 @@ import org.bukkit.inventory.ItemStack;
 
 import com.google.common.base.Preconditions;
 
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
 
 /**
  * Represents a single Attribute that can be applied to ItemStacks.
- * 
+ *
  * @author Ruud Verbeek
  * @see AttributeList, AttributeType, Operation
  */
-
 public class Attribute {
-
     String type;
     int operation = -1;
     double amount = 0;
@@ -25,13 +23,12 @@ public class Attribute {
     /**
      * Constructs an Attribute with the given {@link AttributeType}, {@link Operation}, amount and
      * {@link UUID}.
-     * 
+     *
      * @param type The type of this Attribute.
      * @param operation The operation this Attribute uses to apply its amount to the final value.
      * @param amount The amount of this Attribute.
      * @param uuid This Attribute's {@link UUID}. Must be unique.
      */
-
     public Attribute(final String type, final int operation, final double amount, final UUID uuid) {
         this.type = type;
         this.operation = operation;
@@ -42,12 +39,11 @@ public class Attribute {
     /**
      * Constructs an Attribute using the given {@link AttributeType}, amount and {@link UUID}.
      * {@link Operation#ADD_NUMBER} will be used as {@link Operation}.
-     * 
+     *
      * @param type The type of this Attribute.
      * @param amount The amount of this Attribute.
      * @param uuid This Attribute's {@link UUID}. Must be unique.
      */
-
     public Attribute(final String type, final double amount, final UUID uuid) {
         this(type, Operation.ADD_NUMBER.id, amount, uuid);
     }
@@ -55,7 +51,7 @@ public class Attribute {
     /**
      * Constructs an Attribute using the given {@link AttributeType}, {@link Operation} and amount.
      * A random {@link UUID} will be used.
-     * 
+     *
      * @param type The type of this Attribute.
      * @param operation The operation this Attribute uses to apply its amount to the final value.
      * @param amount The amount of this Attribute
@@ -68,11 +64,10 @@ public class Attribute {
      * Constructs an Attribute using the give {@link AttributeType} and amount.
      * {@link Operation#ADD_NUMBER} will be used as {@link Operation} and a random {@link UUID} will
      * be used.
-     * 
+     *
      * @param type The type of this Attribute.
      * @param amount The amount of this Attribute.
      */
-
     public Attribute(final String type, final double amount) {
         this(type, Operation.ADD_NUMBER.id, amount, UUID.randomUUID());
     }
@@ -82,14 +77,13 @@ public class Attribute {
      * and a random {@link UUID}. The {@link AttributeType} must still be set using
      * {@link #setType}.
      */
-
     public Attribute() {
         this(null, Operation.ADD_NUMBER.id, 0.0, UUID.randomUUID());
     }
 
     /**
      * Sets the {@link AttributeType} of this Attribute.
-     * 
+     *
      * @param type The {@link AttributeType}
      * @return This Attribute
      */
@@ -100,7 +94,7 @@ public class Attribute {
 
     /**
      * Sets the {@link Operation} of this Attribute.
-     * 
+     *
      * @param operation The {@link Operation}
      * @return This Attribute
      */
@@ -111,7 +105,7 @@ public class Attribute {
 
     /**
      * Sets the {@link Operation} of this Attribute.
-     * 
+     *
      * @param operation The {@link Operation}
      * @return This Attribute
      */
@@ -122,7 +116,7 @@ public class Attribute {
 
     /**
      * Sets the amount of this Attribute.
-     * 
+     *
      * @param amount The amount
      * @return This Attribute
      */
@@ -133,7 +127,7 @@ public class Attribute {
 
     /**
      * Sets the {@link UUID} of this Attribute.
-     * 
+     *
      * @param uuid The {@link UUID}
      * @return This Attribute
      */
@@ -144,7 +138,7 @@ public class Attribute {
 
     /**
      * Returns this Attribute's {@link AttributeType}
-     * 
+     *
      * @return The {@link AttributeType}
      */
     public String getType() {
@@ -153,7 +147,7 @@ public class Attribute {
 
     /**
      * Returns this Attribute's {@link Operation}
-     * 
+     *
      * @return The {@link Operation}
      */
     public int getOperation() {
@@ -162,7 +156,7 @@ public class Attribute {
 
     /**
      * Returns this Attribute's amount
-     * 
+     *
      * @return The amount
      */
     public double getAmount() {
@@ -171,14 +165,14 @@ public class Attribute {
 
     /**
      * Returns this Attribute's {@link UUID}
-     * 
+     *
      * @return The {@link UUID}
      */
     public UUID getUUID() {
         return this.uuid;
     }
 
-    NBTTagCompound write() throws InstantiationException, IllegalAccessException {
+    NBTTagCompound write() {
         Preconditions.checkNotNull(this.type, "Type cannot be null.");
         if (this.operation == -1) {
             this.operation = Operation.ADD_NUMBER.id;
@@ -200,7 +194,6 @@ public class Attribute {
     /**
      * Returns whether or not this attribute is equal to o.
      */
-
     @Override
     public boolean equals(final Object o) {
         if (!(o instanceof Attribute)) {
@@ -237,14 +230,12 @@ public class Attribute {
 
     /**
      * Shortcut to {@link Attributes#apply}.
-     * 
+     *
      * @param is ItemStack to apply this attribute to
      * @param replace Whether or not to replace existing attributes on the ItemStack
      * @return the new ItemStack containing this Attribute
      */
-
     public ItemStack apply(final ItemStack is, final boolean replace) {
         return Attributes.apply(is, this, replace);
     }
-
 }
